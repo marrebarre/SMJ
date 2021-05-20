@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1280.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Journal">
+   <children>
+      <VBox fx:id="searchList" prefHeight="900.0" prefWidth="373.0">
+         <children>
+            <TextField fx:id="searchTxt" onAction="#search" prefWidth="400.0" promptText="Search...">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+         </children>
+      </VBox>
+      <TilePane fx:id="papers" alignment="CENTER" prefHeight="891.0" prefWidth="885.0">
+         <children>
+            <AnchorPane fx:id="paper" prefHeight="816.0" prefWidth="583.0" visible="false">
+               <children>
+                  <Label layoutX="84.0" layoutY="78.0" text="SMJournal                             " underline="true">
+                     <font>
+                        <Font name="Times New Roman" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="nameLbl" layoutX="84.0" layoutY="129.0" prefHeight="14.0" prefWidth="164.0" text="Full Name" />
+                  <Label fx:id="civicLbl" layoutX="84.0" layoutY="143.0" prefHeight="14.0" prefWidth="164.0" text="Civic" />
+                  <Label fx:id="dateLbl" layoutX="436.0" layoutY="98.0" prefHeight="14.0" prefWidth="95.0" text="YYYY-MM-DD" />
+                  <Label layoutX="87.0" layoutY="246.0" styleClass="Bigtext" text="Patient's symptoms">
+                     <font>
+                        <Font name="Times New Roman" size="30.0" />
+                     </font>
+                  </Label>
+                  <Pane fx:id="displayComments" layoutX="88.0" layoutY="283.0">
+                     <children>
+                        <Label fx:id="commentLbl1" alignment="TOP_LEFT" prefHeight="120.0" prefWidth="392.0" />
+                        <Label fx:id="commentLbl2" alignment="TOP_LEFT" layoutY="179.0" prefHeight="120.0" prefWidth="392.0" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="editComments" layoutX="88.0" layoutY="280.0" visible="false">
+                     <children>
+                        <TextArea fx:id="commentTxt1" focusTraversable="false" prefHeight="125.0" prefWidth="413.0" />
+                        <TextArea fx:id="commentTxt2" focusTraversable="false" layoutY="179.0" prefHeight="125.0" prefWidth="413.0" />
+                     </children>
+                  </Pane>
+                  <Label layoutX="88.0" layoutY="426.0" styleClass="Bigtext" text="Doctor's treatment">
+                     <font>
+                        <Font name="Times New Roman" size="30.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutX="294.0" layoutY="700.0" prefHeight="1.0" prefWidth="200.0" style="-fx-background-color: black;" />
+                  <Label layoutX="413.0" layoutY="722.0" text="Doctor's signature" />
+                  <Label layoutX="350.0" layoutY="659.0" styleClass="Signature" text="SM">
+                     <font>
+                        <Font name="Rage Italic" size="40.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </TilePane>
+   </children>
+</HBox>
