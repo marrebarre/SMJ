@@ -1,0 +1,2 @@
+# SMJ
+Sebastian Martin Journal
