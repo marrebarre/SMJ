@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="413.0" prefWidth="617.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
    <children>
-      <Button fx:id="btn" layoutX="34.0" layoutY="325.0" mnemonicParsing="false" onAction="#postData" prefHeight="51.0" prefWidth="549.0" text="Kalkylera">
+      <Button fx:id="addBtn" layoutX="34.0" layoutY="325.0" mnemonicParsing="false" onAction="#postData" prefHeight="51.0" prefWidth="549.0" text="Add person">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <TextField fx:id="txt" layoutX="34.0" layoutY="260.0" prefHeight="51.0" prefWidth="549.0" text="O Hi this a test Car River Deer Car Bear and">
+      <TextField fx:id="name" layoutX="34.0" layoutY="37.0" prefHeight="51.0" prefWidth="549.0" promptText="Name">
          <font>
             <Font size="24.0" />
          </font>
       </TextField>
-      <Label fx:id="lbl" alignment="TOP_LEFT" layoutX="33.0" layoutY="38.0" prefHeight="200.0" prefWidth="549.0" text="Testing testing...">
+      <TextField fx:id="civic" layoutX="34.0" layoutY="114.0" prefHeight="51.0" prefWidth="549.0" promptText="Civic">
          <font>
             <Font size="24.0" />
          </font>
-      </Label>
+      </TextField>
    </children>
 </AnchorPane>
