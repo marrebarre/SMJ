@@ -9,6 +9,11 @@ VBox{
 
 }
 
+.saveBtn{
+    -fx-pref-width: 100;
+    -fx-pref-height: 30;
+}
+
 Button{
     -fx-pref-width: 400;
     -fx-pref-height: 40;

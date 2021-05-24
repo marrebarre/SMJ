@@ -14,12 +14,12 @@
             <Font size="96.0" />
          </font>
       </Label>
-      <TextField alignment="CENTER" layoutX="471.0" layoutY="371.0" text="Username">
+      <TextField fx:id="usernameTxt" alignment="CENTER" layoutX="471.0" layoutY="371.0" onAction="#loginPressed" text="Username">
          <font>
             <Font size="28.0" />
          </font>
       </TextField>
-      <PasswordField alignment="CENTER" layoutX="471.0" layoutY="441.0" onAction="#loginPressed" promptText="Password">
+      <PasswordField fx:id="passwordTxt" alignment="CENTER" layoutX="471.0" layoutY="441.0" onAction="#loginPressed" promptText="Password">
          <font>
             <Font size="28.0" />
          </font>
