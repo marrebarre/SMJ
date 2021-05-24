@@ -78,7 +78,7 @@ public class Journal extends Controller {
 
         for (int i = 0; i < persons.size(); i++) {
             Person person = persons.get(i);
-            Button personBtn = new Button(person.getName() + ":" + person.getCivic());
+            Button personBtn = new Button(swedify(person.getName()) + ":" + person.getCivic());
 
             personBtn.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -177,6 +177,10 @@ public class Journal extends Controller {
         displayComments.setVisible(true);
         paper.setVisible(false);
 
+    }
+
+    public void addPerson(){
+        newScene("sample.fxml");
     }
 
 }

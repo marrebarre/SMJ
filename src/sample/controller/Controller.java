@@ -7,7 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import sample.Main;
 import sample.model.Person;
 
@@ -23,10 +25,11 @@ import java.time.format.DateTimeFormatter;
 
 public class Controller {
 
+
     @FXML
-    Label lbl = new Label();
+    TextField name = new TextField();
     @FXML
-    TextField txt = new TextField();
+    TextField civic = new TextField();
 
     String hostAddress = "https://smj-backend.herokuapp.com";
 
@@ -36,15 +39,14 @@ public class Controller {
     public void postData() throws Exception {
 
         //Simple JSON SIMULATOR
-        Person person = new Person("Sebbekung", "95nåntingjaoo", 1337);
+        Person person = new Person(name.getText(), civic.getText(), 1337);
         String jsonPerson = gson.toJson(person);
 
         System.out.println(jsonPerson);
 
-        //REQUESTS
-        //post("/getWordLengthFrequency", jsonPerson);
-        get("/");
-        //post("/addPerson", jsonPerson);
+        System.out.println(post("/persons/add", jsonPerson));
+        name.clear();
+        civic.clear();
     }
 
 
@@ -116,38 +118,7 @@ public class Controller {
 
     }
 
-    //GET WITH PARAMETER
-    public String get(String route, String string) throws Exception {
-        URL url = new URL(hostAddress + route);
 
-        //HTTP osv...
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
-        con.setRequestProperty("Content-Type", "application/json");
-        con.setDoOutput(true);
-
-        //Body
-        OutputStreamWriter writer = new OutputStreamWriter(con.getOutputStream());
-        writer.write(string);
-        writer.flush();
-
-        //Res
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuilder content = new StringBuilder();
-        while ((inputLine = in.readLine()) != null) {
-            content.append(inputLine);
-        }
-
-        System.out.println(content.toString());
-
-
-        in.close();
-
-        con.disconnect();
-        return content.toString();
-    }
 
     public void changeScene(String view) {
         Stage StageTest = Main.getPrimaryStage();
@@ -164,6 +135,21 @@ public class Controller {
             stage.show();
         } catch (IOException e) {
             System.out.println("Could not change scene...");
+        }
+    }
+
+    public void newScene(String view) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/view/" + view));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            stage.setTitle("Add person");
+            stage.setScene(new Scene(root1));
+            stage.show();
+        }catch (Exception e){
+            System.out.println("Could not load new Scene.");
         }
     }
 

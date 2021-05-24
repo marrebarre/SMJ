@@ -34,3 +34,11 @@ AnchorPane{
 .Bigtext{
     -fx-font-size: 30;
 }
+
+.addPerson{
+    -fx-pref-width: 250;
+    -fx-pref-height: 75;
+    -fx-font-family: Arial;
+    -fx-font-size: 24px;
+
+}

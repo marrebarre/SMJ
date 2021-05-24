@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1280.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Journal">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1389.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Journal">
    <children>
       <VBox fx:id="searchList" prefHeight="900.0" prefWidth="373.0">
          <children>
@@ -31,7 +31,7 @@
             </Label>
          </children>
       </VBox>
-      <TilePane fx:id="papers" alignment="CENTER" prefHeight="891.0" prefWidth="885.0">
+      <TilePane fx:id="papers" alignment="CENTER" prefHeight="900.0" prefWidth="764.0">
          <children>
             <AnchorPane fx:id="paper" prefHeight="816.0" prefWidth="583.0" visible="false">
                <children>
@@ -77,5 +77,10 @@
             </AnchorPane>
          </children>
       </TilePane>
+      <Pane prefHeight="900.0" prefWidth="204.0">
+         <children>
+            <Button layoutX="-10.0" layoutY="10.0" mnemonicParsing="false" onAction="#addPerson" styleClass="addPerson" text="Add Person" />
+         </children>
+      </Pane>
    </children>
 </HBox>
