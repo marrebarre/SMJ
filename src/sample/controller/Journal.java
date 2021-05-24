@@ -4,12 +4,13 @@ import com.google.gson.Gson;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.TilePane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import sample.controller.Controller;
 import sample.model.*;
 
@@ -35,9 +36,20 @@ public class Journal extends Controller {
     @FXML
     Label commentLbl2;
 
+    @FXML
+    TextArea commentTxt1;
+    @FXML
+    TextArea commentTxt2;
+
 
     @FXML
     TextField searchTxt;
+
+    @FXML
+    Pane displayComments;
+    @FXML
+    Pane editComments;
+
 
     public void search() throws Exception {
 
@@ -71,10 +83,10 @@ public class Journal extends Controller {
             personBtn.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
+                    
+                    nameLbl.setText(swedify(person.getName()));
+                    civicLbl.setText(swedify(person.getCivic()));
 
-
-                    nameLbl.setText(person.getName());
-                    civicLbl.setText(person.getCivic());
 
                     String result = null;
                     try {
@@ -89,19 +101,18 @@ public class Journal extends Controller {
                     System.out.println(documents.getDocuments());
                     loadDocumentList(documents.getDocuments());
 
-
                 }
             });
 
             searchList.getChildren().add(personBtn);
         }
 
-
     }
 
     private void loadDocumentList(ArrayList<Document> documents) {
 
         searchTxt = (TextField) searchList.getChildren().get(0);
+
         searchList.getChildren().clear();
         searchList.getChildren().add(searchTxt);
 
@@ -115,16 +126,56 @@ public class Journal extends Controller {
                 public void handle(ActionEvent event) {
 
                     dateLbl.setText(document.getTimestamp());
-                    commentLbl1.setText(document.getComment());
-                    commentLbl2.setText(document.getDoctorscomment());
+                    commentLbl1.setText(swedify(document.getComment()));
+                    commentLbl2.setText(swedify(document.getDoctorscomment()));
                     paper.setVisible(true);
-
+                    editComments.setVisible(false);
+                    displayComments.setVisible(true);
                 }
             });
 
 
+
+
             searchList.getChildren().add(documentBtn);
+
         }
+        Button newDocumentBtn = new Button("+");
+        newDocumentBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                paper.setVisible(true);
+                editComments.setVisible(true);
+                displayComments.setVisible(false);
+                dateLbl.setText(getTime());
+            }
+        });
+        searchList.getChildren().add(newDocumentBtn);
+
+    }
+
+    public void saveDocument(){
+
+        Document document = new Document(dateLbl.getText(),commentTxt1.getText(),searchList.getChildren().size()-1,civicLbl.getText(), commentTxt2.getText());
+        System.out.println(document);
+
+        try {
+            post("/documents/add", gson.toJson(document));
+            Body body = new Body(document.getCivicid());
+            String result = post("/documents", gson.toJson(body));
+            Documents documents = gson.fromJson(result, Documents.class);
+
+            loadDocumentList(documents.getDocuments());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        commentTxt1.clear();
+        commentTxt2.clear();
+        editComments.setVisible(false);
+        displayComments.setVisible(true);
+        paper.setVisible(false);
 
     }
 

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -18,7 +20,15 @@
                <font>
                   <Font size="24.0" />
                </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="2.0" right="3.0" top="2.0" />
+               </VBox.margin>
             </TextField>
+            <Label alignment="CENTER" prefHeight="68.0" prefWidth="373.0" text="Start off by searching for a person." textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Italic" size="20.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
       <TilePane fx:id="papers" alignment="CENTER" prefHeight="891.0" prefWidth="885.0">
@@ -44,10 +54,11 @@
                         <Label fx:id="commentLbl2" alignment="TOP_LEFT" layoutY="179.0" prefHeight="120.0" prefWidth="392.0" />
                      </children>
                   </Pane>
-                  <Pane fx:id="editComments" layoutX="88.0" layoutY="280.0" visible="false">
+                  <Pane fx:id="editComments" layoutX="88.0" layoutY="280.0" prefHeight="534.0" prefWidth="413.0" visible="false">
                      <children>
                         <TextArea fx:id="commentTxt1" focusTraversable="false" prefHeight="125.0" prefWidth="413.0" />
                         <TextArea fx:id="commentTxt2" focusTraversable="false" layoutY="179.0" prefHeight="125.0" prefWidth="413.0" />
+                        <Button fx:id="saveBtn" layoutX="307.0" layoutY="493.0" mnemonicParsing="false" onAction="#saveDocument" prefHeight="51.0" prefWidth="266.0" styleClass="saveBtn" text="Save" />
                      </children>
                   </Pane>
                   <Label layoutX="88.0" layoutY="426.0" styleClass="Bigtext" text="Doctor's treatment">

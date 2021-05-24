@@ -17,6 +17,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 
 public class Controller {
@@ -27,7 +29,7 @@ public class Controller {
     TextField txt = new TextField();
 
     String hostAddress = "https://smj-backend.herokuapp.com";
-    //String hostAddress = "http://localhost:8080";
+
 
     Gson gson = new Gson();
 
@@ -163,6 +165,20 @@ public class Controller {
         } catch (IOException e) {
             System.out.println("Could not change scene...");
         }
+    }
+
+    public String swedify(String string){
+        String newString = string.replace("†","å");
+        newString = newString.replace("”", "ö");
+        newString = newString.replace("„", "ä");
+        return newString;
+
+    }
+
+    public String getTime(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        return LocalDate.now().format(formatter);
     }
 
 }
