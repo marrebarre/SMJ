@@ -52,7 +52,6 @@ public class Controller {
 
     public String post(String route, String string) throws Exception {
 
-
         URL url = new URL(hostAddress + route);
 
         //HTTP osv...
@@ -61,16 +60,12 @@ public class Controller {
         con.setRequestMethod("POST");
         con.setDoOutput(true);
 
-
         //Body
         OutputStreamWriter writer = new OutputStreamWriter(con.getOutputStream());
         writer.write(string);
         writer.flush();
 
-        System.out.println(string);
-
-
-        //Res
+        //Response
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(con.getInputStream()));
         String inputLine;
@@ -79,12 +74,10 @@ public class Controller {
             content.append(inputLine);
         }
 
-
         in.close();
 
         con.disconnect();
         return content.toString();
-
 
     }
 

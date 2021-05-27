@@ -53,14 +53,9 @@ public class Journal extends Controller {
 
     public void search() throws Exception {
 
-
         Body body = new Body(searchTxt.getText());
 
-
         String result = post("/persons", gson.toJson(body));
-        //String result = post("/persons", searchTxt.getText());
-
-        System.out.println(result);
 
         Persons persons = gson.fromJson(result, Persons.class);
 

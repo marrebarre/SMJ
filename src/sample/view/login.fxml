@@ -29,5 +29,6 @@
             <Font size="28.0" />
          </font>
       </Button>
+      <Label fx:id="err" layoutX="564.0" layoutY="511.0" text="Invalid username or password!" visible="false" />
    </children>
 </AnchorPane>
